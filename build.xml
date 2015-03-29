@@ -71,4 +71,21 @@
 			<class location="${target.dir}/jar/jenkinsTest.jar" />
 		</findbugs>
 	</target>
+
+	<property name="checkstyle.home.dir" location="/var/tmp/" />
+	<target name="checkstyle" description="Generate a report of code convention violations.">
+		<taskdef resource="checkstyletask.properties" classpath="${checkstyle.home.dir}/checkstyle-6.5-all.jar" />
+
+		<!-- run verification of installation-->
+		<available file="${checkstyle.home.dir}/checkstyle-6.5-all.jar" property="checkstyle.available" />
+		<fail unless="checkstyle.available" message="Error: CHECKSTYLE_HOME not set or checkstyle-all-5.0.jar not found." />
+		<mkdir dir="${report.checkstyle.dir}" />
+
+		<!-- run analysis-->
+		<checkstyle config="${checkstyle.home.dir}/sun_checks.xml" failureProperty="checkstyle.failure" failOnViolation="false">
+			<formatter type="xml" tofile="checkstyle.xml" />
+			<fileset dir="${src.dir}" includes="**/*.java" />
+		</checkstyle>
+	</target>
+
 </project>
