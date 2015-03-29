@@ -1,0 +1,40 @@
+<project name="jenkinsTest" basedir=".">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build/" />
+	<property name="target.dir" value="target/" />
+	<path id="master-classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}" />
+	</path>
+	<target name="clean.all" description="Clean All">
+		<delete includeemptydirs="true" dir="${build.dir}" />
+	</target>
+
+	<target name="build" description="Compile source tree java files">
+		<mkdir dir="${build.dir}" />
+		<javac destdir="${build.dir}" source="1.7" target="1.7" srcdir="${src.dir}" includeantruntime="false">
+			<classpath refid="master-classpath">
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="build_jar" depends="build">
+		<mkdir dir="${target.dir}" />
+		<jar destfile="${target.dir}/jar/jenkinsTest.jar" basedir="${build.dir}">
+		</jar>
+	</target>
+
+	<target name="run_tests" depends="build">
+		<junit haltonfailure="true" printsummary="true" fork="yes">
+			<test name="the.bhushan.tests.RunAllTests" />
+			<classpath>
+				<pathelement location="${build.dir}" />
+				<path refid="master-classpath">
+				</path>
+			</classpath>
+			<formatter type="xml" />
+		</junit>
+	</target>
+</project>
