@@ -1,5 +1,5 @@
 <project name="jenkinsTest" basedir=".">
-	<record name="/output/build.log" loglevel="verbose" action="start"/>
+	<record name="build.log" loglevel="verbose" action="start"/>
 	<property name="src.dir" value="src/" />
 	<property name="build.dir" value="build/" />
 	<property name="target.dir" value="target/" />
