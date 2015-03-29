@@ -1,11 +1,14 @@
 package the.bhushan;
 
+import java.util.List;
+
 public class Role {
 
 	private Integer id;
 	private String code;
 	private String remarks;
 	private String status;
+	private List<String> Commands;
 	
 	public Role() {
 		
@@ -34,5 +37,13 @@ public class Role {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public List<String> getCommands() {
+		return Commands;
+	}
+
+	public void setCommands(List<String> commands) {
+		this.Commands = commands;
 	}
 }
