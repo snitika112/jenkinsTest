@@ -9,7 +9,7 @@ public class Role {
 	
 	public Role() {
 		Role r = new Role();
-		r.setCode("the");
+		r.setCode("thea");
 	}
 	
 	public Integer getId() {
