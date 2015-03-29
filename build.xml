@@ -1,4 +1,5 @@
 <project name="jenkinsTest" basedir=".">
+	<record name="/output/build.log" loglevel="verbose" action="start"/>
 	<property name="src.dir" value="src/" />
 	<property name="build.dir" value="build/" />
 	<property name="target.dir" value="target/" />
@@ -79,7 +80,6 @@
 		<!-- run verification of installation-->
 		<available file="${checkstyle.home.dir}/checkstyle-6.5-all.jar" property="checkstyle.available" />
 		<fail unless="checkstyle.available" message="Error: CHECKSTYLE_HOME not set or checkstyle-all-5.0.jar not found." />
-		<mkdir dir="${report.checkstyle.dir}" />
 
 		<!-- run analysis-->
 		<checkstyle config="${checkstyle.home.dir}/sun_checks.xml" failureProperty="checkstyle.failure" failOnViolation="false">
