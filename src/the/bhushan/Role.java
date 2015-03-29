@@ -7,6 +7,11 @@ public class Role {
 	private String remarks;
 	private String status;
 	
+	public Role() {
+		Role r = new Role();
+		r.setCode("the");
+	}
+	
 	public Integer getId() {
 		return id;
 	}
