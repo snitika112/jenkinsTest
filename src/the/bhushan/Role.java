@@ -8,8 +8,7 @@ public class Role {
 	private String status;
 	
 	public Role() {
-		Role r = new Role();
-		r.setCode("thea");
+		
 	}
 	
 	public Integer getId() {
