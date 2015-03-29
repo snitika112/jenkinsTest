@@ -1,5 +1,5 @@
 <project name="jenkinsTest" basedir=".">
-	<property name="src.dir" value="src" />
+	<property name="src.dir" value="src/" />
 	<property name="build.dir" value="build/" />
 	<property name="target.dir" value="target/" />
 	<path id="master-classpath">
@@ -36,5 +36,27 @@
 			</classpath>
 			<formatter type="xml" />
 		</junit>
+	</target>
+
+	<property name="pmd.dir" value="/var/tmp/pmd-5.2.3" />
+	<path id="pmd.classpath">
+		<fileset dir="${pmd.dir}\lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath" />
+	<taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask" classpathref="pmd.classpath" />
+
+	<target name="pmd">
+		<pmd shortFilenames="true">
+			<ruleset>rulesets/internal/all-java.xml</ruleset>
+			<formatter type="html" toFile="pmd_report.html">
+				<param name="linkPrefix" value="http://pmd.sourceforge.net/xref/" />
+			</formatter>
+			<formatter type="xml" toFile="pmd.xml" />
+			<fileset dir="${src.dir}">
+				<include name="**/*.java" />
+			</fileset>
+		</pmd>
 	</target>
 </project>
