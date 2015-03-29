@@ -6,7 +6,7 @@ public class Role {
 	private String code;
 	private String remarks;
 	private String status;
-	private String asfdddddddddddddddddddddddddddddddddddddddddddddddd;
+	
 	public Integer getId() {
 		return id;
 	}
