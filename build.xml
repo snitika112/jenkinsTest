@@ -44,9 +44,10 @@
 			<include name="*.jar" />
 		</fileset>
 	</path>
+
+
 	<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" classpathref="pmd.classpath" />
 	<taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask" classpathref="pmd.classpath" />
-
 	<target name="pmd">
 		<pmd shortFilenames="true">
 			<ruleset>rulesets/internal/all-java.xml</ruleset>
@@ -58,5 +59,16 @@
 				<include name="**/*.java" />
 			</fileset>
 		</pmd>
+	</target>
+
+	<property name="findbugs.home" value="/var/tmp/findbugs-3.0.1" />
+	<taskdef name="findbugs" classpath="/var/tmp/findbugs-3.0.1/lib/findbugs-ant.jar" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" />
+
+	<target name="findbugs">
+		<findbugs home="${findbugs.home}" output="html" outputFile="findbugs.html" jvmargs="-Xms512M -Xmx512M ">
+			<auxClasspath path="lib/junit-4.10.jar" />
+			<sourcePath path="${src.dir}" />
+			<class location="${target.dir}/jar/jenkinsTest.jar" />
+		</findbugs>
 	</target>
 </project>
