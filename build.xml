@@ -15,7 +15,8 @@
 
 	<target name="build" description="Compile source tree java files">
 		<mkdir dir="${build.dir}" />
-		<javac destdir="${build.dir}" source="1.7" target="1.7" srcdir="${src.dir}" includeantruntime="false">
+		<javac destdir="${build.dir}" source="1.7" target="1.7" srcdir="${src.dir}"
+			includeantruntime="false" debug="true">
 			<classpath refid="master-classpath">
 			</classpath>
 		</javac>
