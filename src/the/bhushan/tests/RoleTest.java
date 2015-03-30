@@ -13,7 +13,6 @@ public class RoleTest {
 	@Test
 	public void testRoleStatus() {
 		Role role = new Role();
-		Role role1 = new Role();
 		role.setStatus("A");
 		Assert.assertEquals("Status of role doesn't match.", "A",
 				role.getStatus());

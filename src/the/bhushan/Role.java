@@ -8,7 +8,7 @@ public class Role {
 	private String code;
 	private String remarks;
 	private String status;
-	private List<String> Commands;
+	private List<String> commands;
 	
 	public Role() {
 		
@@ -40,10 +40,10 @@ public class Role {
 	}
 
 	public List<String> getCommands() {
-		return Commands;
+		return commands;
 	}
 
 	public void setCommands(List<String> commands) {
-		this.Commands = commands;
+		this.commands = commands;
 	}
 }
